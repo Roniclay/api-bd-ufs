@@ -1,0 +1,75 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API bd",
+    "description": "Api da atividade 01",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Usuario"],
+        "description": "Criar um novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Novo usuário criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Usuario"],
+        "description": "Obter todos os usuários",
+        "responses": {
+          "200": {
+            "description": "Retorna todos os usuários",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "cpf": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "data_nascimento": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
